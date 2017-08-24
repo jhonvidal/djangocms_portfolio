@@ -1,9 +1,0 @@
-<div class="filter-holder column-filter">
-    <div class="filter-button">Filter <i class="fa fa-long-arrow-down"></i></div>
-    <div class="gallery-filters hid-filter">
-        <a href="#" class="gallery-filter transition2 gallery-filter_active" data-filter="*">All</a>
-        {% for category in categories %}
-            <a href="#" class="gallery-filter transition2" data-filter=".{{ category.slug }}">{{ category.title }}</a>
-        {% endfor %}
-    </div>
-</div>
