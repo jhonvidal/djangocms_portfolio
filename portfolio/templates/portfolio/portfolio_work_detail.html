@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{# Thumbnail tags #}
+{% load thumbnail %}
+{# I18N #}
+{% load i18n %}
+
+{# Title Override #}
+{% block title %}{{ work.title }}{% endblock %}
+
+{# content #}
+
+{% block content %}
+    <h2>
+        {{ work.title }}
+    </h2>
+    <div class="meta">
+
+        <p>{% trans 'Published on' %} - {{ work.pub_date }}</p>
+        <p>{% trans 'Published In' %} - <a href="{% url 'work_category' work.category.slug %}">{{ work.category }}</a>
+        </p>
+        <div class="bs-example" data-example-id="label-variants">
+            {% trans 'Tags : ' %}
+            {% for tag in work.tags.all %}
+                <span class="label label-primary"><a style="color:#FFF;"
+                                                     href="{% url 'work_tag' tag.slug %}">{{ tag }}</a></span>
+            {% endfor %}
+        </div>
+    </div>
+    <br/>
+
+    <div class="content">
+        <img src="{{ work.head_picture.url }}"/>
+        <p>{{ work.description|safe }}</p>
+
+        <div class="row">
+            <div class="col-xs-6 col-md-3">
+                {% for picture in work.folder.files.all %}
+                    <a href="#" class="thumbnail">
+                        <img src="{% thumbnail picture 500x500 crop %}"/>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+
+        {% if work.get_previous_work %}<a href="{{ work.get_previous_work }}">{% trans 'Previous Work' %}</a>{% endif %}
+        {% if work.get_next_work %}<a href="{{ work.get_next_work }}">{% trans 'Next Work' %}</a>{% endif %}
+
+    </div>
+
+
+    <a href="{% url 'portfolio_list' %}">{% trans 'Return to list' %}</a>
+{% endblock %}

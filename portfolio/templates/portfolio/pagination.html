@@ -1,0 +1,19 @@
+{% load i18n %}
+{% if is_paginated %}
+    <div class="pagination-blog">
+        {% if page_obj.has_previous %}
+            <a href="?{{ view.page_kwarg }}={{ page_obj.previous_page_number }}" class="prevposts-link transition"><i
+                    class="fa fa-chevron-left"></i></a>
+        {% endif %}
+        {% for page in paginator.page_range %}
+            <a href="?page={{ page }}"
+               class="blog-page {% if page == page_obj.number %}current-page{% endif %} transition">{{ page }}</a>
+        {% endfor %}
+
+
+        {% if page_obj.has_next %}
+            <a href="?{{ view.page_kwarg }}={{ page_obj.next_page_number }}" class="nextposts-link transition"><i
+                    class="fa fa-chevron-right"></i></a>
+        {% endif %}
+    </div>
+{% endif %}

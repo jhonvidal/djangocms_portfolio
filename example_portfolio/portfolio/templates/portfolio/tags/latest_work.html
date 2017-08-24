@@ -1,0 +1,5 @@
+<ul>
+    {% for work in latest_works %}
+    <li><a href="{{work.get_absolute_url}}">{{work.title}}</a>
+    {% endfor %}
+</ul>

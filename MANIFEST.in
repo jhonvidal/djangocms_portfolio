@@ -1,0 +1,6 @@
+include LICENSE
+include README.md
+recursive-include portfolio/locale *
+recursive-include portfolio/templates *
+recursive-include portfolio/migrations *
+recursive-include portfolio/templatetags *
