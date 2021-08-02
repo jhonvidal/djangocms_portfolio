@@ -14,7 +14,7 @@ from filer.fields.folder import FilerFolderField
 from taggit.managers import TaggableManager
 
 # Reverse
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
 # I18N
 from django.utils.translation import ugettext as _
