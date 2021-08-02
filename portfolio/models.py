@@ -42,7 +42,7 @@ class Work(models.Model):
     client = models.CharField(_('Client'), max_length=255, null=True, blank=True)
     location = models.CharField(_('Location'), max_length=255, null=True, blank=True)
     head_picture = FilerImageField(verbose_name=_("Head"),on_delete=models.CASCADE,)
-    folder = FilerFolderField(verbose_name=_('Gallery Folder'), null=True, blank=True)
+    folder = FilerFolderField(verbose_name=_('Gallery Folder'), null=True, blank=True,on_delete=models.CASCADE,)
 
     class Meta:
         verbose_name = _('Work')
