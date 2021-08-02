@@ -37,7 +37,7 @@ class Work(models.Model):
     slug = models.SlugField()
     pub_date = models.DateTimeField(_('Published on'), auto_now_add=True)
     description = HTMLField(_('Work Description'))
-    category = models.ForeignKey(CategoryWork, verbose_name=_('Category'))
+    category = models.ForeignKey(CategoryWork, verbose_name=_('Category'), on_delete=models.CASCADE,)
     tags = TaggableManager()
     client = models.CharField(_('Client'), max_length=255, null=True, blank=True)
     location = models.CharField(_('Location'), max_length=255, null=True, blank=True)
